@@ -69,7 +69,9 @@
             sx: Math.round(Math.random() * 10),
             sy: Math.round(Math.random() * 10),
             draw: function () {
+                ctx.beginPath(); // æ·»åŠ è¿™ä¸€è¡Œ
                 ctx.strokeStyle = this.color;
+                // console.log(this.color)
                 ctx.moveTo(this.x, this.y);
                 this.moveNext();
                 ctx.lineTo(this.x, this.y);
@@ -91,24 +93,28 @@
                 this.x = Math.round(Math.random() * w);
                 this.y = 0;
             },
-            color: 'gray',
+            // color: 'rgb('+Math.round(Math.random()*255)+","+Math.round(Math.random()*255)+","+Math.round(Math.random()*255)+")",
             init: function () {
+                this.color='rgb('+Math.round(Math.random()*255)+","+Math.round(Math.random()*255)+","+Math.round(Math.random()*255)+")"
                 this.x = Math.round(Math.random() * w);
-                this.length = Math.ceil(Math.random() * 15) + 15;
+                this.length = Math.ceil(Math.random() * 2)+1;
                 this.y = Math.round(Math.random() * h - 500);
                 this.sx = Math.round(Math.random() * 1);
                 this.sy = Math.round(Math.random() * 5) + 5;
-                this.vx = Math.round(this.sx / Math.sqrt(this.sx * this.sx + this.sy * this.sy));
-                this.vy = Math.ceil(this.sy / Math.sqrt(this.sx * this.sx + this.sy * this.sy));
+                this.vx= Math.round(this.sx / Math.sqrt(this.sx * this.sx + this.sy * this.sy))
+                // this.vx = 3;
+                // this.vy = Math.ceil(this.sy / Math.sqrt(this.sx * this.sx + this.sy * this.sy))*15;
+                this.vy = 8;
 
             }
         }
         var rain = [];
-        for (var i = 0; i < 100; i++) {
+        for (var i = 0; i < 200; i++) {
             var t = new dot();
             rain.push(t);
             rain[i].init();
         }
+        console.log(rain)
         var timer = null;
         var index = 0;
         function draw() {
@@ -134,9 +140,9 @@
         //     workers: 2,
         //     quality: 10
         // });
-        // // Ìí¼ÓÒ»¸öÍ¼Æ¬±êÇ©¶ÔÏóÏñËØµ½µ±Ç°Ö¡
+        // // ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½Í¼Æ¬ï¿½ï¿½Ç©ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Øµï¿½ï¿½ï¿½Ç°Ö¡
         // // gif.addFrame(imageElement);
-        // // //»òÌí¼ÓÒ»¸öcanvas¶ÔÏóµÄÏñËØµ½µ±Ç°Ö¡
+        // // //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½canvasï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Øµï¿½ï¿½ï¿½Ç°Ö¡
         // // gif.addFrame(document.getElementsByTagName('canvas')[0], {
         // //     delay: 200
         // // });
@@ -146,15 +152,15 @@
         // // gif.addFrame(document.getElementsByTagName('canvas')[0], {
         // //     delay: 200
         // // });
-        // // //´Ócanvas context¸´ÖÆÏñËØµ½µ±Ç°Ö¡
+        // // //ï¿½ï¿½canvas contextï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Øµï¿½ï¿½ï¿½Ç°Ö¡
         // gif.addFrame(cvs, {
         //     copy: true
         // });
-        // //ºÏ³ÉÍ¼Æ¬³É¹¦ºó
+        // //ï¿½Ï³ï¿½Í¼Æ¬ï¿½É¹ï¿½ï¿½ï¿½
         // gif.on('finished', function (blob) {
         //     window.open(URL.createObjectURL(blob));
         // });
-        // //äÖÈ¾Í¼Æ¬
+        // //ï¿½ï¿½È¾Í¼Æ¬
         // gif.render();
 
     </script>
